@@ -33,27 +33,50 @@
 
 <!--  <jdbc:embedded-database id="dataSource" type="HSQL" />-->
 
-<!--  配置c3p0数据源-->
+
 <!--  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
 <!--    <property name="location">-->
 <!--      <value>classpath:db.properties</value>-->
 <!--    </property>-->
 <!--  </bean>-->
+
+  <!-- 配置自动扫描的包 -->
+  <context:component-scan base-package="com.ld.jpa"></context:component-scan>
+  <!--  配置c3p0数据源-->
   <context:property-placeholder location="classpath:db.properties"/>
   <bean id="dataSource"
     class="com.mchange.v2.c3p0.ComboPooledDataSource">
     <property name="user" value="${jdbc.user}"></property>
     <property name="password" value="${jdbc.password}"></property>
-    <property name="driverClass" value="${jdbc.driver}"></property>
-    <property name="jdbcUrl" value="${jdbc.url}"></property>
+    <property name="driverClass" value="${jdbc.driverClass}"></property>
+    <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
   </bean>
 
 <!--  配置EntityManagerFactory-->
   <bean id="entityManagerFactory"
     class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="dataSource" ref="dataSource"></property>
-<!--    -->
-
+<!--    配置jpa提供商的适配器， 可以通过内部Bean的方式设置-->
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+    </property>
+<!--    实体类所在的package-->
+    <property name="packagesToScan" value="com.ld.jpa.spring.entity"></property>
+<!--    配置jpa的基本属性， 例如jpa实现产品的属性-->
+    <property name="jpaProperties">
+      <props>
+        <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.hbm2ddl.auto">create</prop>
+        <prop key="hibernate.format_sql">true</prop>
+        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+      </props>
+    </property>
+  </bean>
+<!--   配置jpa使用的事务管理器 -->
+  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"></property>
   </bean>
 
+<!--  配置支持基于注解式事务管理-->
+  <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
 </beans>
