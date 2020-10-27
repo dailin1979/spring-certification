@@ -1,0 +1,22 @@
+.project
+.classpath
+.springBeans
+.factorypath
+.settings/
+target/
+
+#IntelliJ Stuff
+.idea
+*.iml
+
+#Geode Stuff
+*.log
+*.dat
+
+.DS_Store
+*.i*
+vf*
+
+
+
+/out/
