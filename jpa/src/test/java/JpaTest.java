@@ -1,7 +1,5 @@
-
-
-import com.ld.jpa.spring.entity.Student;
-import com.ld.jpa.spring.service.StudentService;
+import com.ld.jpa.entity.Student;
+import com.ld.jpa.service.StudentService;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import org.junit.Test;
@@ -13,7 +11,7 @@ public class JpaTest {
   private StudentService studentService = null;
 
   {
-    ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+    ctx = new ClassPathXmlApplicationContext("application-context-jpa.xml");
     studentService = ctx.getBean(StudentService.class);
   }
 
@@ -35,5 +33,7 @@ public class JpaTest {
 
     studentService.savePersons(student01);
   }
+
+
 
 }

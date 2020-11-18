@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+    http://www.springframework.org/schema/context/spring-context.xsd"
 
 >
 
@@ -52,6 +52,7 @@
     <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
   </bean>
 
+
 <!--  配置EntityManagerFactory-->
   <bean id="entityManagerFactory"
     class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -68,7 +69,7 @@
         <prop key="hibernate.show_sql">true</prop>
         <prop key="hibernate.hbm2ddl.auto">create</prop>
         <prop key="hibernate.format_sql">true</prop>
-        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</prop>
+        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
       </props>
     </property>
   </bean>
@@ -77,6 +78,8 @@
     <property name="entityManagerFactory" ref="entityManagerFactory"></property>
   </bean>
 
-<!--  配置支持基于注解式事务管理-->
-  <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+
+
+<!--&lt;!&ndash;  配置支持基于注解式事务管理&ndash;&gt;-->
+<!--  <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>-->
 </beans>

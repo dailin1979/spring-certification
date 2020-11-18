@@ -1,7 +1,7 @@
-package com.ld.jpa.spring.service;
+package com.ld.jpa.service;
 
-import com.ld.jpa.spring.dao.StudentDao;
-import com.ld.jpa.spring.entity.Student;
+import com.ld.jpa.dao.StudentDao;
+import com.ld.jpa.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
-package com.ld.jpa.spring.dao;
+package com.ld.jpa.dao;
 
-import com.ld.jpa.spring.entity.Student;
+import com.ld.jpa.entity.Student;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
