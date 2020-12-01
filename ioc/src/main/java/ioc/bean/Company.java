@@ -1,20 +1,40 @@
 package ioc.bean;
 
 import java.util.List;
+import java.util.Map;
 
-public class Family {
+public class Company {
   private String name;
   private String address;
   private List<Car> cars;
+  private Map<String,Car> parkedCar;
 
-  public Family(String name, String address, List<Car> cars) {
+
+  public Company() {
+  }
+
+  public Company(String name, String address, List<Car> cars) {
     this.name = name;
     this.address = address;
     this.cars = cars;
   }
 
-  public Family() {
+  public Company(String name, String address, List<Car> cars,
+      Map<String, Car> parkedCar) {
+    this.name = name;
+    this.address = address;
+    this.cars = cars;
+    this.parkedCar = parkedCar;
   }
+
+  public Map<String, Car> getParkedCar() {
+    return parkedCar;
+  }
+
+  public void setParkedCar(Map<String, Car> parkedCar) {
+    this.parkedCar = parkedCar;
+  }
+
 
   public String getName() {
     return name;
@@ -42,10 +62,11 @@ public class Family {
 
   @Override
   public String toString() {
-    return "Family{" +
+    return "Company{" +
         "name='" + name + '\'' +
         ", address='" + address + '\'' +
         ", cars=" + cars +
+        ", parkedCar=" + parkedCar +
         '}';
   }
 }
