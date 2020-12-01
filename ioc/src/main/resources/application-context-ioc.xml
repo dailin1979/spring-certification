@@ -6,28 +6,30 @@
   xmlns:util="http://www.springframework.org/schema/util"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.springframework.org/schema/beans"
-  xsi:schemaLocation="http://www.springframework.org/schema/jdbc https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+  xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/data/jpa
 		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/tx
+		https://www.springframework.org/schema/tx/spring-tx.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/util
   http://www.springframework.org/schema/util/spring-util.xsd"
 
 >
-  <bean id="helloWorld" class="com.ld.ioc.bean.HelloWorld">
+  <bean id="helloWorld" class="ioc.bean.HelloWorld">
     <property name="name" value="test"></property>
   </bean>
-  <bean id="car" class="com.ld.ioc.bean.Car" >
+  <bean id="car" class="ioc.bean.Car" >
     <constructor-arg value="audi" index="1"></constructor-arg>
     <constructor-arg value="sh" index="0"></constructor-arg>
     <constructor-arg value="1000000"></constructor-arg>
   </bean>
 
-  <bean id="car2" class="com.ld.ioc.bean.Car">
+  <bean id="car2" class="ioc.bean.Car">
     <constructor-arg type="java.lang.String">
       <value>bmw</value>
     </constructor-arg>
@@ -35,16 +37,18 @@
     <constructor-arg value="300" type="java.lang.Double"></constructor-arg>
   </bean>
 
-  <bean id="person01" class="com.ld.ioc.bean.Person">
+  <bean id="person01" class="ioc.bean.Person">
     <property name="name" value="testperson01"></property>
     <property name="age" value="35"></property>
+<!--    可以通过property中的ref元素或者ref属性建立bean之间的引用关系-->
 <!--    <property name="car" ref="car2"></property>-->
 
 <!--    <property name="car">-->
-<!--      <ref bean="car"></ref>-->
+<!--      <ref com.ld.bean="car"></ref>-->
 <!--    </property>-->
+<!--    bean的引用关系可以通过建立内部bean的方法建立, 内部bean不能被其他的bean引用-->
     <property name="car">
-      <bean class="com.ld.ioc.bean.Car">
+      <bean class="ioc.bean.Car">
         <constructor-arg value="audi"></constructor-arg>
         <constructor-arg value="beijing"></constructor-arg>
         <constructor-arg value="160.0" type="java.lang.Double"></constructor-arg>
@@ -53,5 +57,7 @@
 <!--   给级联属性赋值， 注意: 属性需要先初始化后才可以为级联属性赋值， 否则会有异常, 和Strut2不同,  -->
     <property name="car.maxSpeed" value="260.0"></property>
   </bean>
+
+
 
 </beans>

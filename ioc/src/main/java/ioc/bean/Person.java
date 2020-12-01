@@ -1,6 +1,4 @@
-package com.ld.ioc.bean;
-
-import java.util.List;
+package ioc.bean;
 
 public class Person {
   private String name;

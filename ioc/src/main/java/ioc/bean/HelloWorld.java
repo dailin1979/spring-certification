@@ -1,4 +1,4 @@
-package com.ld.ioc.bean;
+package ioc.bean;
 
 public class HelloWorld {
   private String name;

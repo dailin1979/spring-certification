@@ -1,6 +1,8 @@
-import com.ld.ioc.bean.Car;
-import com.ld.ioc.bean.HelloWorld;
-import com.ld.ioc.bean.Person;
+
+
+import ioc.bean.Car;
+import ioc.bean.HelloWorld;
+import ioc.bean.Person;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
