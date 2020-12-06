@@ -102,7 +102,7 @@
   </bean>
 
 <!--  配置单例的集合bean，此集合bean独立出来以供多个bean可以引用， 需要导入util命名空间-->
-  <util:list id="myCars">
+  <util:list id="cars">
     <ref bean="car"/>
     <ref bean="car2"/>
   </util:list>
@@ -110,12 +110,21 @@
   <bean id="company003" class="ioc.bean.Company">
     <property name="name" value="myCompany003"></property>
     <property name="address" value="xxxstr. 003"></property>
-    <property name="cars" ref="myCars">
+    <property name="cars" ref="cars">
     </property>
   </bean>
 
 <!--  通过p namespace为bean的属性赋值, 需要先导入p namespace, 相比传统的方式更简洁-->
  <bean id="person02" class="ioc.bean.Person" p:age="30" p:name="sandra" p:car-ref="car"></bean>
+
+<!--  自动装配 通过bean标签的autowire属性,
+byName 根据setter风格的属性名字找bean装配，若有，则装配，若无，则null
+byType 根据bean类型和当前属性的类型进行装配， 前提是此bean是singelton, 否则出错-->
+  <bean id="address" class="ioc.bean.Address" p:city="shanghai" p:street="hangxing road 408">
+  </bean>
+<!--  mycars在上面装配过了-->
+
+  <bean id="localResident01" class="ioc.bean.LocalResident" p:name="tom" autowire="byName" ></bean>
 
 
 

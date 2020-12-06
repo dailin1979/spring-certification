@@ -3,6 +3,7 @@
 import ioc.bean.Car;
 import ioc.bean.Company;
 import ioc.bean.HelloWorld;
+import ioc.bean.LocalResident;
 import ioc.bean.MyDataSource;
 import ioc.bean.Person;
 import org.junit.Test;
@@ -63,5 +64,11 @@ public class IocTest {
   public void testIoc08(){
     Person person02= (Person) ctx.getBean("person02");
     System.out.println(person02.toString());
+  }
+
+  @Test
+  public void testIoc09(){
+    LocalResident localResident01 = (LocalResident) ctx.getBean("localResident01");
+    System.out.println(localResident01.toString());
   }
 }
