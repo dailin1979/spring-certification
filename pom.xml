@@ -64,6 +64,19 @@
       <version>${spring.version}</version>
     </dependency>
 
+<!--    c3p0 connection-->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.2</version>
+    </dependency>
+<!--    mysql driver-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.49</version>
+    </dependency>
+
     <!-- Logging -->
     <!-- log日志 -->
 <!--    <dependency>-->

@@ -12,7 +12,7 @@ public class IocTest02 {
   private ApplicationContext ctx = null;
 
   {
-    ctx = new ClassPathXmlApplicationContext("application-contest-ioc-bean-relationship.xml");
+    ctx = new ClassPathXmlApplicationContext("application-context-ioc-bean-relationship.xml");
   }
 
 //  bean 的配置继承
