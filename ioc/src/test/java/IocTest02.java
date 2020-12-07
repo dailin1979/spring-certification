@@ -1,6 +1,7 @@
 
 
 import ioc.bean.Address;
+import ioc.bean.Car;
 import ioc.bean.NewPerson;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -30,6 +31,21 @@ public class IocTest02 {
     NewPerson myPerson01;
     myPerson01 = (NewPerson) ctx.getBean("person01");
     System.out.println(myPerson01.toString());
+  }
+
+  //  bean 的作用域, 默认的是singelton, 可以通过scope属性改变为prototype，这样的话每次调用getbean返回的是不同的实例
+  @Test
+  public void test03(){
+    NewPerson myPerson01, myPerson02;
+    myPerson01 = (NewPerson) ctx.getBean("person01");
+    myPerson02 = (NewPerson) ctx.getBean("person01");
+
+    System.out.println(myPerson01.equals(myPerson02));
+
+    Car car01, car02;
+    car01= (Car) ctx.getBean("car02");
+    car02= (Car) ctx.getBean("car02");
+    System.out.println(car01.equals(car02));
   }
 
 }

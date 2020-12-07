@@ -30,6 +30,10 @@
 
   <!--  bean的依赖关系-->
   <bean id="car" class="ioc.bean.Car" p:brand="audi" p:corp="volkswagen" p:price="100000" p:maxSpeed="220"/>
-  <bean id="person01" class="ioc.bean.NewPerson" p:name="tom" p:age="22" p:address-ref="address01" depends-on="car"></bean>
+  <bean id="person01" class="ioc.bean.NewPerson" p:name="tom" p:age="22" p:address-ref="address01" p:car-ref="car" depends-on="car"></bean>
 
+<!--   bean 的作用域,
+      singelton: 默认,在容器初始化时创建bean实例, 在整个容器的生命周期里只创建一个bean
+      prototype: 在容器初始化时不创建bean实例, 每次调用getbean方法时创建实例， 返回的是不同的实例-->
+  <bean id="car02" class="ioc.bean.Car" p:brand="audi" p:corp="volkswagen" p:price="100000" p:maxSpeed="220" scope="prototype"/>
 </beans>
