@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa
+		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx
+		https://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd">
+<bean id="address01" class="ioc.bean.Address" p:city="neuberg" p:street="wilhelmstr."></bean>
+<!--  可以通过abstract属性定义一个抽象bean, 这个bean不会被ioc容器实例化, 甚至可以省略class属性，只需要在子bean确定class,
+可以将抽象bean理解为被继承配置的一个模板.
+如果一个bean没有确定class属性， 必须将这个bean定义为抽象bean-->
+<bean id="address" p:city="hanau" p:street="wilhelmstr." abstract="true"></bean>
+<!--  配置继承, 与oop中的继承没有关系，只是将一个bean的已经配置的属性继承, 也可以覆盖。
+ 并不是所有属性都可以继承，如abstract和autowire-->
+<bean id="address02" class="ioc.bean.Address" p:street="darmstadterstrasse" parent="address"></bean>
+
+
+</beans>
