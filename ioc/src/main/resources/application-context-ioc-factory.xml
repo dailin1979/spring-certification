@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa
+		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx
+		https://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd">
+  <!--  通过静态工厂方法来配置car, 不是配置静态工厂方法实例，而是bean实例-->
+  <!--
+  class属性: 静态工厂的全类名
+  factory-method: 静态工厂方法的名字
+  constructor-arg: 如果工厂方法需要传入参数，可以通过此标签配置参数
+  -->
+  <bean id="car01" class="ioc.bean.factory.StaticCarFactory" factory-method="getCar">
+    <constructor-arg value="audi"></constructor-arg>
+  </bean>
+
+  <!--  配置工厂的实例-->
+  <bean id="carFactory" class="ioc.bean.factory.CarFactoy"></bean>
+  <!--  通过实例工厂的方法来配置bean-->
+  <!--
+  class属性: 实例工厂的全类名
+  factory-bean: 实例工厂的   bean
+  factory-method: 实例工厂方法的名字
+  constructor-arg: 如果工厂方法需要传入参数，可以通过此标签配置参数
+  -->
+  <bean id="car02" factory-bean="carFactory" factory-method="getCar">
+    <constructor-arg value="focus"></constructor-arg>
+  </bean>
+
+  <!--  通过FactoryBean来配置Bean的实例
+     class: FactoryBean的全类名
+     property: 配置FactoryBean的属性
+
+     实际返回的是FactoryBean的getObject()方法返回的实例
+     -->
+  <bean id="car03" class="ioc.bean.factory.CarFactoryBean">
+    <property name="brand" value="audi"></property>
+    <property name="typ" value="q3"></property>
+    <property name="price" value="30000"></property>
+    <property name="maxSpeed" value="260.0"></property>
+  </bean>
+</beans>

@@ -22,6 +22,13 @@ public class Car {
     this.maxSpeed = maxSpeed;
   }
 
+  public Car(String brand, String corp, Integer price, Double maxSpeed) {
+    this.brand = brand;
+    this.corp = corp;
+    this.price = price;
+    this.maxSpeed = maxSpeed;
+  }
+
   public String getBrand() {
     return brand;
   }
