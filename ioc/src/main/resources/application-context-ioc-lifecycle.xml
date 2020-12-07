@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa
+		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx
+		https://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd">
+  <bean id="car01" class="ioc.bean.LifecycleCar" init-method="initBean" destroy-method="destroyBean">
+  <property name="brand" value="#{'audi'}"/>
+  </bean>
+  <bean id="car02" class="ioc.bean.Car" p:brand="mg"></bean>
+
+  <!--  实现 BeanPostProcessor 接口，重写接口的两个方法
+  Object postProcessBeforeInitialization(Object o, String s): init-method之前被调用
+  Object postProcessAfterInitialization(Object o, String s): init-method之后被调用
+
+  Object o: bean实例
+  String s: bean在ioc容器中的名字(id属性)
+  返回值: 实际上返回给用户的那个bean, 注意: 可以在以上两个方法中修改返回的bean,甚至可以返回一个新的bean
+  -->
+  <!--  配置bean的后置处理器, 不需要配置id, ioc容器自动识别是一个BeanPostProcessor-->
+  <bean class="ioc.bean.processors.MyPostBeanProcessor"/>
+
+</beans>
