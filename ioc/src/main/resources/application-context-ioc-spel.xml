@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa
+		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx
+		https://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd">
+  <bean id="car" class="ioc.bean.SpelCar">
+    <property name="brand" value="audi"></property>
+    <property name="price" value="50000.00"></property>
+<!--    通过spel引用类的静态属性-->
+    <property name="perimeterOfTyre" value="#{T(java.lang.Math).PI * 80}"></property>
+  </bean>
+  <bean id="address" class="ioc.bean.Address">
+    <property name="city" value="#{'Frankfurt am Main'}"></property>
+    <property name="street" value="mainzerlandstrasse 180"></property>
+  </bean>
+
+  <bean id="person" class="ioc.bean.SpelPerson">
+<!--    通过spel引用其他的bean-->
+    <property name="car" value="#{car}"></property>
+<!--    通过spel引用其他的bean的属性-->
+    <property name="city" value="#{address.city}"></property>
+<!--    通过spel使用三元运算符-->
+    <property name="information" value="#{car.price>300000?'金领':'白领'}"></property>
+    <property name="name" value="#{'tom'}"></property>
+  </bean>
+
+
+</beans>
