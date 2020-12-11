@@ -20,7 +20,7 @@
   </properties>
 
   <modules>
-    <module>jpa</module>
+<!--    <module>jpa</module>-->
     <!--    <module>mongodb</module>-->
 <!--    <module>querydsl</module>-->
 <!--    <module>neo4j</module>-->
