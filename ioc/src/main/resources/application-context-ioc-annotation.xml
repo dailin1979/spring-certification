@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa
+		https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx
+		https://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd">
+  <!--  通过context:component-scan 可以指定spring ioc容器扫描的package-->
+  <!--  可以通过resource-pattern 可以设定过滤器，指定哪个子package不用扫描-->
+  <!--  <context:component-scan-->
+  <!--    base-package="ioc.bean.annotation"-->
+  <!--    resource-pattern="ioc.bean.annotation.controller"></context:component-scan>  -->
+
+  <!--  ANNOTATION-->
+  <!--  context:exclude-filter 排除某个子节点不被ioc容器扫描-->
+  <!--  <context:component-scan-->
+  <!--    base-package="ioc.bean.annotation">-->
+  <!--    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+  <!--  </context:component-scan>-->
+
+  <!--context:exclude-filter 指定某个子节点被ioc容器扫描， 要配合use-default-filters="false" 一起使用-->
+  <!--  <context:component-scan-->
+  <!--    use-default-filters="false"-->
+  <!--    base-package="ioc.bean.annotation">-->
+  <!--    <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+  <!--  </context:component-scan>-->
+
+  <!--  ASSIGNABLE 类名-->
+  <!--  context:exclude-filter 排除某个类不被ioc容器扫描-->
+  <!--  <context:component-scan-->
+  <!--    base-package="ioc.bean.annotation">-->
+  <!--    <context:exclude-filter type="assignable" expression="ioc.bean.annotation.service.UserServiceImpl"/>-->
+  <!--  </context:component-scan> -->
+
+  <!--context:exclude-filter 指定某个子节点被ioc容器扫描， 要配合use-default-filters="false" 一起使用-->
+<!--  <context:component-scan-->
+<!--    base-package="ioc.bean.annotation" use-default-filters="false">-->
+<!--    <context:include-filter type="assignable" expression="ioc.bean.annotation.service.UserServiceImpl"/>-->
+<!--  </context:component-scan>  -->
+
+  <context:component-scan
+    base-package="ioc.bean.annotation">
+  </context:component-scan>
+</beans>
