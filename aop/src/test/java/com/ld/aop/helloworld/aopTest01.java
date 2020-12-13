@@ -29,8 +29,14 @@ public class aopTest01 {
     int result = arithmeticCalculator.add(1, 2);
     System.out.println("---> " + result);
 
-    Integer divResult = arithmeticCalculator.div(6, 2);
+    Integer divResult = arithmeticCalculator.intDiv(6, 2);
     System.out.println("---> " + divResult);
+
+//    Integer divResultTest = arithmeticCalculator.intDiv(6, 0);
+//    System.out.println("---> " + divResultTest);
+
+    Double doubleDivResult = arithmeticCalculator.doubleDiv(1000.0, 2.0);
+    System.out.println("---> " + doubleDivResult);
   }
 
 }

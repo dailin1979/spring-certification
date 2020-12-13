@@ -4,6 +4,7 @@ import com.ld.aop.impl.ArithmeticCalculator;
 
 public class ArithmeticCalculatorLoggingImpl implements ArithmeticCalculator {
 
+
   private Integer result;
 
   @Override
@@ -25,7 +26,12 @@ public class ArithmeticCalculatorLoggingImpl implements ArithmeticCalculator {
   }
 
   @Override
-  public Integer div(Integer i, Integer j) {
+  public Integer intDiv(Integer i, Integer j) {
+    return i/j;
+  }
+
+  @Override
+  public Double doubleDiv(Double i, Double j) {
     return i/j;
   }
 }

@@ -26,7 +26,13 @@ public class ArithmeticCalculatorImpl implements ArithmeticCalculator {
   }
 
   @Override
-  public Integer div(Integer i, Integer j) {
+  public Integer intDiv(Integer i, Integer j) {
+    result = i/j;
+    return result;
+  }
+
+  @Override
+  public Double doubleDiv(Double i, Double j) {
     return i/j;
   }
 }
