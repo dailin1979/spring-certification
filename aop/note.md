@@ -41,17 +41,16 @@ i. 声明一个方法
 ii. 在方法前加入@Before, @After等aspectJ提供的annotation
 
 4) 可以在通知方法中声明一个类型为JoinPoint的参数，就可以访问到方法的细节信息，如名称和参数值
-## 把这个类声明为一个切面: 需要把这个类放入ioc容器，在声明为一个切面
-# @Aspect
-# @Component
-# public class LogginAspect {
+把这个类声明为一个切面: 需要把这个类放入ioc容器，在声明为一个切面
+ @Aspect
+ @Component
+ public class LogginAspect {
  
-# // 声明该方法是前置通知，在目标方法开始之前执行
-#   @Before("execution(public Integer com.ld.aop.impl.ArithmeticCalculatorImpl.*(Integer, Integer))")
-#   public void beforeMethod(JoinPoint joinPoint){
-#     String name = joinPoint.getSignature().getName();
-#     List<Object> args = Arrays.asList(joinPoint.getArgs());
-#     System.out.println("the method " + name + " begins with " + args);
-#   }
-# }
-#
+声明该方法是前置通知，在目标方法开始之前执行
+  @Before("execution(public Integer com.ld.aop.impl.ArithmeticCalculatorImpl.*(Integer, Integer))")
+   public void beforeMethod(JoinPoint joinPoint){
+     String name = joinPoint.getSignature().getName();
+     List<Object> args = Arrays.asList(joinPoint.getArgs());
+     System.out.println("the method " + name + " begins with " + args);
+   }
+ }
