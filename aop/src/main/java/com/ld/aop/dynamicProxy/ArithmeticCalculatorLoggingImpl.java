@@ -1,4 +1,4 @@
-package com.ld.aop.helloworld;
+package com.ld.aop.dynamicProxy;
 
 import com.ld.aop.impl.ArithmeticCalculator;
 

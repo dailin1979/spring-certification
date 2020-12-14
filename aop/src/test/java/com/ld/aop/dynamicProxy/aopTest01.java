@@ -1,7 +1,6 @@
-package com.ld.aop.helloworld;
+package com.ld.aop.dynamicProxy;
 
 import com.ld.aop.impl.ArithmeticCalculator;
-import com.ld.aop.impl.ArithmeticCalculatorImpl;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -32,11 +31,13 @@ public class aopTest01 {
     Integer divResult = arithmeticCalculator.intDiv(6, 2);
     System.out.println("---> " + divResult);
 
-//    Integer divResultTest = arithmeticCalculator.intDiv(6, 0);
-//    System.out.println("---> " + divResultTest);
 
     Double doubleDivResult = arithmeticCalculator.doubleDiv(1000.0, 2.0);
     System.out.println("---> " + doubleDivResult);
+    
+//  test @afterThrowing
+    Integer intDivResult = arithmeticCalculator.intDiv(6, 0);
+    System.out.println("---> " + intDivResult);
   }
 
 }
