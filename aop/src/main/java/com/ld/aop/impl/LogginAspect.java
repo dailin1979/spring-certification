@@ -10,9 +10,11 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 //把这个类声明为一个切面: 需要把这个类放入ioc容器，在声明为一个切面
+@Order(3)
 @Aspect
 @Component
 public class LogginAspect {

@@ -36,8 +36,8 @@ public class aopTest01 {
     System.out.println("---> " + doubleDivResult);
     
 //  test @afterThrowing
-    Integer intDivResult = arithmeticCalculator.intDiv(6, 0);
-    System.out.println("---> " + intDivResult);
+//    Integer intDivResult = arithmeticCalculator.intDiv(6, 0);
+//    System.out.println("---> " + intDivResult);
   }
 
 }
