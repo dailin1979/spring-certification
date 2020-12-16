@@ -1,4 +1,4 @@
-package com.ld.aop.impl;
+package com.ld.aop.logging;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,14 +10,24 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-//把这个类声明为一个切面: 需要把这个类放入ioc容器，在声明为一个切面
+/* 把这个类声明为一个切面: 需要把这个类放入ioc容器，在声明为一个切面
+* 可以使用@Order指定切面的优先级， 值越小优先级越高
+*/
 @Order(3)
 @Aspect
 @Component
-public class LogginAspect {
+public class LoggingAspect {
+
+  /**
+   * 定义一个方法， 用于声明切入点表达式， 一般该方法中不需要添入其他的代码
+   * 使用@Pointcut annotation.
+   */
+  @Pointcut("execution(public * com.ld.aop.impl.ArithmeticCalculator.*(..))")
+  public void delareJointPointExpression(){}
 
 // 声明该方法是前置通知，在某个类的目标方法开始之前执行
 //  @Before("execution(public Integer com.ld.aop.impl.ArithmeticCalculatorImpl.*(Integer, Integer))")
@@ -28,7 +38,7 @@ public class LogginAspect {
 //  }
 
 //   声明该方法是前置通知，在某个interface每个实现类的目标方法开始之前执行一段代码
-  @Before("execution(public * com.ld.aop.impl.ArithmeticCalculator.*(..))")
+  @Before("delareJointPointExpression()")
   public void beforeMethod(JoinPoint joinPoint){
     String name = joinPoint.getSignature().getName();
     List<Object> args = Arrays.asList(joinPoint.getArgs());
