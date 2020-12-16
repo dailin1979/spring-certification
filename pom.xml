@@ -28,6 +28,7 @@
 <!--    <module>redis</module>-->
 <!--    <module>gemfire</module>-->
 <!--    <module>rest</module>-->
+    <module>jdbc</module>
   </modules>
 
   <dependencies>
@@ -36,12 +37,6 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
       <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <dependency>
@@ -61,22 +56,6 @@
       <artifactId>spring-aop</artifactId>
       <version>${spring.version}</version>
     </dependency>
-
-    <!-- Logging -->
-    <!-- log日志 -->
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-    </dependency>
-
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>${logback.version}</version>
-      <scope>runtime</scope>
-    </dependency>
-
     <!-- Test -->
     <dependency>
       <groupId>org.hamcrest</groupId>
