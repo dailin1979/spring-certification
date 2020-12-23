@@ -58,7 +58,7 @@ public class BookshopDaoImpl implements BookshopDao {
     } else {
       String sql = "update account set balance = balance-? where username = ?";
       int updatedRecord = jdbcTemplate.update(sql, spending, username);
-      System.out.println("user" + username + " account is updated by " + spending);
+      System.out.println("user" + username + " account is updated by -" + spending);
     }
   }
 }

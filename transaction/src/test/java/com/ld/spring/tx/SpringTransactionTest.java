@@ -16,6 +16,9 @@ public class SpringTransactionTest {
   @Autowired
   private BookshopDao bookshopDao;
 
+  @Autowired
+  private BookShopService bookShopService;
+
 /*
 通过注解，可以将下列的code省略，直接通过注解装配bean
   private ApplicationContext ctx;
@@ -43,5 +46,10 @@ public class SpringTransactionTest {
     bookshopDao.updateUserAccount("AA", 100);
   }
 
+  @Test
+  public void testBookShopService(){
+//    Assert.assertNotNull(bookShopService);
+    bookShopService.perchase("BB", "1001");
+  }
 
 }
