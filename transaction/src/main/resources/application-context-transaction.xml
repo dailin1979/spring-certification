@@ -29,8 +29,14 @@
   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
     <property name="dataSource" ref="dataSource"></property>
   </bean>
-  <!--配置 -->
+  <!--配置 namedParameterJdbcTemplate, 通过namedParameterJdbcTemplate可以将?占位符替换为named 参数-->
   <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
     <constructor-arg ref="dataSource"></constructor-arg>
   </bean>
+<!-- 配置事务管理器, 通过setter将dataSource注入-->
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"></property>
+  </bean>
+<!--  启动事务注解-->
+  <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
