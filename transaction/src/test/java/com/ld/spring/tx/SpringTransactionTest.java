@@ -1,5 +1,7 @@
 package com.ld.spring.tx;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +20,10 @@ public class SpringTransactionTest {
 
   @Autowired
   private BookShopService bookShopService;
+
+  @Autowired
+  private Cashier cashier;
+
 
 /*
 通过注解，可以将下列的code省略，直接通过注解装配bean
@@ -51,5 +57,21 @@ public class SpringTransactionTest {
 //    Assert.assertNotNull(bookShopService);
     bookShopService.perchase("BB", "1001");
   }
+
+  /*
+  测试事务的传播属性， 可以通过tansactional的属性propagation定义
+   */
+  @Test
+  public void testPropagationOfTransactional(){
+    List<String> isbns = new ArrayList<>();
+    isbns.add("1001");
+    isbns.add("1002");
+    isbns.add("1003");
+    String username = "AA";
+
+    cashier.checkout(isbns,username);
+  }
+
+
 
 }
