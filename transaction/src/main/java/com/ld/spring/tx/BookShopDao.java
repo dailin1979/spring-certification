@@ -1,6 +1,6 @@
 package com.ld.spring.tx;
 
-public interface BookshopDao {
+public interface BookShopDao {
 
   public Integer findBookPriceByIsbn(String isbn);
 

@@ -1,5 +1,8 @@
 package com.ld.spring.tx;
 
+import com.ld.spring.txxml.service.BookShopDao;
+import com.ld.spring.txxml.service.BookShopService;
+import com.ld.spring.txxml.service.Cashier;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
@@ -9,11 +12,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath*:application-context-transaction.xml")
-public class SpringTransactionTest {
+@ContextConfiguration(locations = "classpath*:application-context-transaction-xml.xml")
+public class SpringTransactionXmlTest {
 
   @Autowired
-  private BookShopDao bookshopDao;
+  private BookShopDao bookShopDao;
 
   @Autowired
   private BookShopService bookShopService;
@@ -33,20 +36,20 @@ public class SpringTransactionTest {
 
   @Test
   public void testBookshopDaoFindBookPriceByIsbn(){
-    Integer price = bookshopDao.findBookPriceByIsbn("1001");
+    Integer price = bookShopDao.findBookPriceByIsbn("1001");
     System.out.println(price);
   }
 
   @Test
   public void testBookshopDaoUpdateBookStockByIsbn(){
-    bookshopDao.updateBookStockByIsbn("1002");
-    Integer stock = bookshopDao.findBookStockByIsbn("1002");
+    bookShopDao.updateBookStockByIsbn("1002");
+    Integer stock = bookShopDao.findBookStockByIsbn("1002");
     System.out.println(stock);
   }
 
   @Test
   public void testBookshopDaoUpdateUserAccount(){
-    bookshopDao.updateUserAccount("AA", 100);
+    bookShopDao.updateUserAccount("AA", 100);
   }
 
   @Test
@@ -61,9 +64,9 @@ public class SpringTransactionTest {
   @Test
   public void testPropagationOfTransactional(){
     List<String> isbns = new ArrayList<>();
-    isbns.add("1003");
-    isbns.add("1002");
     isbns.add("1001");
+    isbns.add("1002");
+    isbns.add("1003");
     String username = "AA";
 
     cashier.checkout(isbns,username);

@@ -2,16 +2,17 @@ package com.ld.spring.tx;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("bookShopService")
 public class BookShopServiceImpl implements BookShopService {
 
 
-  private BookshopDao bookshopDao;
+  private BookShopDao bookshopDao;
 
   @Autowired
-  public BookShopServiceImpl(BookshopDao bookshopDao) {
+  public BookShopServiceImpl(BookShopDao bookshopDao) {
     this.bookshopDao = bookshopDao;
   }
 
@@ -19,6 +20,7 @@ public class BookShopServiceImpl implements BookShopService {
   }
 
 //  添加事务的注解
+//  @Transactional(propagation = Propagation.REQUIRES_NEW)
   @Transactional
   @Override
   public void perchase(String username, String isbn) {

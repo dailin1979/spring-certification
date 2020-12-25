@@ -7,16 +7,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("bookshopDao")
-public class BookshopDaoImpl implements BookshopDao {
+public class BookShopDaoImpl implements BookShopDao {
 
   private JdbcTemplate jdbcTemplate;
 
   @Autowired
-  public BookshopDaoImpl(JdbcTemplate jdbcTemplate) {
+  public BookShopDaoImpl(JdbcTemplate jdbcTemplate) {
     this.jdbcTemplate = jdbcTemplate;
   }
 
-  public BookshopDaoImpl() {
+  public BookShopDaoImpl() {
   }
 
   @Override
