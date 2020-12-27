@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.ld.hibernate.entity.Account" table="sh_account">
+    <id name="id" type="java.lang.Integer" column="id">
+      <generator class="native" />
+    </id>
+    <property name="username" type="java.lang.String" column="username" />
+    <property name="balance" type="java.lang.Double" column="balance" />
+  </class>
+</hibernate-mapping>

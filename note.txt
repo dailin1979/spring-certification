@@ -1,0 +1,13 @@
+1. Spring整合Hibernate, 整合什么?
+  i. 通过ioc context 管理Hibernate的 SessionFactory
+  ii. 让Hibernate使用上spring的声明式事务
+
+2. 整合步骤
+  i. 加入Hibernate
+  - 通过maven 加入 dependencies
+  - 添加hibernate的配置文件在recources文件夹下: hibernate.cfg.xml
+  - 编写持久化类对应的entity mapping xml/ hbm.xml 在pojo的当前目录下 (也可以通过annotation, 加上hibernate-jpa-final 依赖)
+
+  ii. 加入Spring
+
+  iii. 整合
