@@ -29,12 +29,28 @@
     <!--    配置hibernate的配置文件的名称和位置 -->
     <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
     <!--    配置hibernate 的隐射文件的位置和名称，可以使用通配符-->
-<!--    <property name="mappingLocations">-->
-<!--      <list>-->
-<!--        <value>classpath:com/ld/hibernate/mapping/Account.hbm.xml</value>-->
-<!--        <value>classpath:com/ld/hibernate/mapping/Book.hbm.xml</value>-->
-<!--      </list>-->
-<!--    </property>-->
+<!--    在maven的pom文件中需要配置xml-->
     <property name="mappingLocations" value="classpath:com/ld/hibernate/mapping/*.hbm.xml"></property>
   </bean>
+
+<!--  配置spring 的声明式事务-->
+<!--  1. 配置spring为hibernate配置的事务管理器-->
+  <bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory"></property>
+  </bean>
+
+<!--  2. 配置事务属性-->
+  <tx:advice id="txAdvice" transaction-manager="hibernateTransactionManager">
+    <tx:attributes>
+      <tx:method name="get*" read-only="true"/>
+      <tx:method name="find*" read-only="true"/>
+      <tx:method name="*"/>
+    </tx:attributes>
+  </tx:advice>
+
+<!--  3. 配置事务切点，并且将切点和事务属性关联起来-->
+  <aop:config>
+    <aop:pointcut id="txPointcut" expression="execution (* com.ld.hibernate.service.*.(..))"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"></aop:advisor>
+  </aop:config>
 </beans>

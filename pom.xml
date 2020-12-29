@@ -140,6 +140,7 @@
       </plugin>
 
     </plugins>
+<!--    maven 在 compile时将directory下的xml一起编译, 这样将hibernate的entity mapping file / *.hbm.xml带上-->
     <resources>
       <resource>
         <directory>src/main/java</directory>
