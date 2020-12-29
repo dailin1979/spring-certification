@@ -9,5 +9,9 @@
   - 编写持久化类对应的entity mapping xml/ hbm.xml 在pojo的当前目录下 (也可以通过annotation, 加上hibernate-jpa-final 依赖)
 
   ii. 加入Spring
+  - 加入dependencies
+  - 加入spring的配置文件
 
   iii. 整合
+
+3. 代码
