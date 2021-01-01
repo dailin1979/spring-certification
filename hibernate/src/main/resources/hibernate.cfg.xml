@@ -15,7 +15,9 @@
     <!-- readable format for SQL output in the console -->
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-
+    <property name="hibernate.current_session_context_class">
+      org.springframework.orm.hibernate4.SpringSessionContext
+    </property>
 <!--    hibernate 二级缓存相关的属性-->
   </session-factory>
 </hibernate-configuration>

@@ -2,15 +2,24 @@ package com.ld.hibernate.dao;
 
 public interface BookShopDao {
 
-  public Integer findBookPriceByIsbn(String isbn);
+  public Double findBookPriceById(Integer id);
+
+  public Double findBookPriceByIsbn(String isbn);
+
+  public Integer findBookIdByIsbn(String isbn);
+
+  public Integer findBookStockById(Integer id);
 
   public Integer findBookStockByIsbn(String isbn);
 
-  public Integer findAccountByUsername(String username);
+  public Double findBalanceById(Integer id);
 
-  public void updateBookStockByIsbn(String isbn);
+  public Double findBalanceByUsername(String username);
 
-  public void updateUserAccount(String username, Integer spending);
+  public Integer findAccountIdByUsername(String username);
 
+  public void updateBookStockById(Integer id, Integer newStock);
+
+  public void updateUserAccountById(Integer id, Double spending);
 
 }

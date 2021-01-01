@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+  <context:component-scan base-package="com.ld.hibernate"></context:component-scan>
   <!-- 引入资源文件 -->
   <context:property-placeholder
     location="classpath:db.properties" />
@@ -43,14 +44,16 @@
   <tx:advice id="txAdvice" transaction-manager="hibernateTransactionManager">
     <tx:attributes>
       <tx:method name="get*" read-only="true"/>
-      <tx:method name="find*" read-only="true"/>
+      <tx:method name="checkout" propagation="SUPPORTS"/>
+      <tx:method name="purchase" propagation="REQUIRES_NEW"/>
       <tx:method name="*"/>
     </tx:attributes>
   </tx:advice>
 
 <!--  3. 配置事务切点，并且将切点和事务属性关联起来-->
   <aop:config>
-    <aop:pointcut id="txPointcut" expression="execution (* com.ld.hibernate.service.*.(..))"/>
+    <aop:pointcut id="txPointcut" expression="execution(* com.ld.hibernate.service.*.*(..))"/>
+<!--    <aop:pointcut id="txPointcut" expression="execution(* com.ld.hibernate.dao.*.*(..))"/>-->
     <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"></aop:advisor>
   </aop:config>
 </beans>
