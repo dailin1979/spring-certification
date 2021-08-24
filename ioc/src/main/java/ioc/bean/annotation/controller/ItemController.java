@@ -4,7 +4,9 @@ import ioc.bean.annotation.MyFirstAutoWired;
 import ioc.bean.annotation.MySecondAutoWired;
 import ioc.bean.annotation.service.ItemService;
 import ioc.bean.annotation.service.UserService;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class ItemController {
 
     @MyFirstAutoWired
