@@ -22,6 +22,7 @@
   <modules>
 <!--    <module>jpa</module>-->
     <module>ioc</module>
+    <module>testing</module>
     <!--    <module>mongodb</module>-->
 <!--    <module>querydsl</module>-->
 <!--    <module>neo4j</module>-->
