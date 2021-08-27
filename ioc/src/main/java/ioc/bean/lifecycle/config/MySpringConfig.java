@@ -1,15 +1,17 @@
-package ioc.bean.annotation.config;
+package ioc.bean.lifecycle.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan({"ioc.bean.annotation"})
+@ComponentScan({"ioc.bean.lifecycle"})
 public class MySpringConfig {
 
 //    @Bean
 //    public MyPostBeanProcessor myPostBeanProcessor(){
 //        return new MyPostBeanProcessor();
 //    }
+
+
 
 }
