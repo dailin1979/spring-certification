@@ -10,15 +10,29 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ld</groupId>
     <artifactId>spring-test</artifactId>
+    <properties>
+        <spring-data-jpa.version>2.2.0.RELEASE</spring-data-jpa.version>
+        <jackson-json.version>2.10.1</jackson-json.version>
+    </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
+<!--        in Memory DB H2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
 </project>
