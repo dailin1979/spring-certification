@@ -24,7 +24,7 @@
         <mockito.all.version>2.0.2-beta</mockito.all.version>
         <mockito.version>3.2.4</mockito.version>
         <rest.assure.version>4.2.0</rest.assure.version>
-
+        <jackson.version>2.10.2</jackson.version>
     </properties>
     <modules>
         <!--    <module>jpa</module>-->
@@ -103,6 +103,17 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
                 <scope>runtime</scope>
+            </dependency>
+<!--            misc-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
             <!--    test spring-->
             <dependency>

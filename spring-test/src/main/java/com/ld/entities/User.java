@@ -1,26 +1,28 @@
 package com.ld.entities;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class User {
+public class User extends AbstractEntity {
 
-  @Column
-  private String id;
+  public User() {
+    super();
+  }
 
-  @Column
+  @NotNull
+  @Column(name = "USERNAME")
   private String username;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  public String getId() {
-    return id;
-  }
+  @NotNull
+  @Column(name = "FIRSTNAME")
+  private String firstName;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+  @NotNull
+  @Column(name = "LASTNAME")
+  private String lastName;
 
   public String getUsername() {
     return username;
@@ -30,11 +32,25 @@ public class User {
     this.username = username;
   }
 
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
   @Override
   public String toString() {
-    return "User{" +
-        "id='" + id + '\'' +
-        ", username='" + username + '\'' +
-        '}';
+    return String.format("User[username='%s', firstName='%s', lastName='%s']\n",
+            username, firstName, lastName);
   }
 }
