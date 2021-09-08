@@ -1,10 +1,12 @@
 package com.ld.repos;
 
-
 import com.ld.entities.User;
+import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository {
+import java.util.List;
 
-   void save(User user);
+public interface UserRepository extends CrudRepository<User,Long> {
+    List<User> findByUserName(String userName);
 
+    User findById(long id);
 }

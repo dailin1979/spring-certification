@@ -1,0 +1,2 @@
+INSERT INTO USER(ID, USERNAME) VALUES (1, 'sherlock.holmes');
+INSERT INTO USER(ID, USERNAME) VALUES (2, 'irene.adler');
