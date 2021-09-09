@@ -23,6 +23,12 @@ public class JdbcUserRepoImpl extends JdbcAbstractRepo<User> implements UserRepo
   }
 
   @Override
+  public Optional<User> findById(Long id) {
+    String sql = "select ID, USERNAME, FIRSTNAME, LASTNAME from USER where ID= ?";
+    return Optional.of(jdbcTemplate.queryForObject(sql, rowMapper, id));
+  }
+
+  @Override
   public Optional<User> findByUsername(String username) {
     return Optional.empty();
   }
