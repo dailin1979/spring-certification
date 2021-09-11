@@ -21,3 +21,6 @@ spring:
         show_sql: true
         use_sql_comments: true
         format_sql: true
+# tell springboot to use jdk proxy for aop
+#  aop:
+#    proxy-target-class: false

@@ -29,7 +29,6 @@ public class PersonController {
         Person person = personService.findPersonById(id);
 //        long end = System.currentTimeMillis();
 //        logger.info("es dauert {} ms", (end-start));
-//        return String.format("Hello %s!", person);
         return person;
     }
 

@@ -17,6 +17,11 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person findPersonById(int id){
+        test();
         return personDao.findById(id).get();
+    }
+
+    void test(){
+
     }
 }
